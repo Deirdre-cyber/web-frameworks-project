@@ -1,0 +1,27 @@
+{
+  "name": "myproject",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "engines": {
+    "node": "^16.17.0",
+    "npm": "^8.19.1"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrap-icons": "^1.9.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
+    "express": "~4.16.1",
+    "font-awesome": "^4.7.0",
+    "http-errors": "~1.6.3",
+    "mongodb": "^4.11.0",
+    "mongoose": "^6.6.7",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.20",
+    "pug": "^3.0.2"
+  }
+}

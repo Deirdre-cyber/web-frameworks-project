@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    .row.mb-4.mb-lg-5
+      .col-md-8.col-xl-6.text-center.mx-auto
+        p.font-weight-bold.text-warning.mb-2 #{registerPageHeader.title}
+        h2.font-weight-bold #{registerPageHeader.greeting}
+    .row.d-flex.justify-content-center
+      .col-md-6.col-xl-4
+        .card
+          .card-body.text-center.d-flex.flex-column.align-items-center
+            .bs-icon-xl.bs-icon-circle.bs-icon-primary.shadow.bs-icon.my-4
+              img.rounded.img-fluid.shadow.w-100.fit-cover(src=registerPageHeader.icon, style='height: 100%')
+            form(action='/', method='get')
+              .mb-3
+                input.form-control(type='text', name='fName', placeholder='First Name')
+              .mb-3
+                input.form-control(type='text', name='sName', placeholder='Last Name')
+              .mb-3
+                input.form-control(type='email', name='email', placeholder='Email')
+              .mb-3
+                input.form-control(type='password', name='password', 
+                placeholder='Password')
+              .mb-3
+                label(for='level') #{registerForm.levelHeading}&nbsp;
+                br
+                select.rounded.p-2#cars(name='level')
+                  option(value='beginner') #{registerForm.levels[0].low}
+                  option(value='intermediate') #{registerForm.levels[0].med}
+                  option(value='advanced') #{registerForm.levels[0].high}
+              p.text-muted #{registerForm.text}&nbsp;
+                a(href='/login') #{registerForm.button}
+              .mb-3
+                button.btn.btn-warning.shadow.d-block.w-100(type='submit') #{registerForm.altButton}

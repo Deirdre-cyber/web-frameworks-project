@@ -1,0 +1,25 @@
+extends layout 
+
+include _includes/sharedHTMLfunctions
+
+block content
+
+  - index = 1 //currently hardcoded to display specific trick
+
+  .container.py-4.py-xl-5
+    .row.mb-5
+      .col-md-8.col-xl-6.text-center.mx-auto
+        h2.font-weight-bold #{pageHeader.name[index]}
+        p.text-muted.w-lg-50 #{pageHeader.title[index]}
+    
+        div.mt-5
+          img.rounded.img-fluid.shadow.w-100.fit-cover(src=tricks[index].image, style='height: 350px;')
+          .py-4
+            p.text-muted.pb-3 #{tricks[index].instructions}
+            h5.pb-1 Muscle Groups Engaged
+            .muscle-groups.pb-4
+              each muscle in tricks[index].muscle_groups
+                span.badge.badge-warning.p-2.m-2 #{muscle}
+            h5.pb-1 Home Exercises
+            a.text-muted(href= '#') 
+            p.text-muted #{tricks[index].conditioning}

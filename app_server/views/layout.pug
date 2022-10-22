@@ -1,0 +1,54 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0, shrink-to-fit=no')
+  title Polestellar
+  link(rel="icon" type='image/x-icon', href='/images/pole_icon1.jfif')
+  link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+  link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+  link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&display=swap')
+  
+nav#mainNav.navbar.navbar-dark.navbar-expand-md.sticky-top.navbar-shrink.py-3
+  .container
+    a.navbar-brand.d-flex.align-items-center(href='/')
+      span.bs-icon-sm.bs-icon-circle.bs-icon-primary.shadow.d-flex.justify-content-center.align-items-center.mr-2.bs-icon
+        i.fa.fa-rocket(aria-hidden='true')
+      span
+        strong Polestellar
+    button.navbar-toggler(data-toggle='collapse', data-target='#navcol-3')
+      span.sr-only Toggle navigation
+      span.navbar-toggler-icon
+    #navcol-3.collapse.navbar-collapse
+      ul.navbar-nav.mx-auto
+        li.nav-item
+          a.nav-link(href='/') All 
+      a.btn.btn-warning.shadow(role='button', href='/register') Register
+      a.btn.btn-warning.shadow.ml-2(role='button', href='/login') Login
+      a.btn.btn-primary.ml-2(role='button', href='/login/favourites') Favourites
+section.py-1
+  
+block content
+
+footer.bg-dark
+  .container.py-4.py-lg-5
+    .row.justify-content-center
+      .col-lg-3.text-center.text-lg-left.d-flex.flex-column.align-items-center.order-first.align-items-lg-start.order-lg-last.item.social
+        .font-weight-bold.d-flex.align-items-center.mb-2
+          span.bs-icon-sm.bs-icon-circle.bs-icon-primary.d-flex.justify-content-center.align-items-center.bs-icon.mr-2
+            i.fa.fa-rocket(aria-hidden='true')
+          span Polestellar
+        p.text-muted.copyright Strengthen, condition, learn and fly
+    hr
+    .text-muted.d-flex.justify-content-between.pt-3(style='background: var(--bs-gray-100);')
+      p.mb-0 Copyright &copy; 2022 Deirdre Lee
+      ul.list-inline.mb-0
+        li.list-inline-item
+          //fb icon
+        li.list-inline-item
+          //insta icon
+script(src='/javascripts/jquery.min.js')
+script(src='/javascripts/bootstrap.min.js')
+script(src='/javascripts/bold-and-bright.js')
+script(src='/javascripts/script.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js')
+script(src='https://code.jquery.com/jquery-3.1.1.slim.min.js')

@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    .row.mb-4.mb-lg-5
+      .col-md-8.col-xl-6.text-center.mx-auto
+        p.font-weight-bold.text-warning.mb-2 #{loginPageHeader.title}
+        h2.font-weight-bold #{loginPageHeader.greeting}
+    .row.d-flex.justify-content-center
+      .col-md-6.col-xl-4
+        .card
+          .card-body.text-center.d-flex.flex-column.align-items-center
+            .bs-icon-xl.bs-icon-circle.bs-icon-primary.shadow.bs-icon.my-4
+              img.rounded.img-fluid.shadow.w-100.fit-cover(src=loginPageHeader.icon, style='height: 100%')
+            form(action='/', method='get')
+              .mb-3
+                input.form-control(type='email', name='email', placeholder='Email')
+              .mb-3
+                input.form-control(type='password', name='password', placeholder='Password')
+              .mb-3
+                button.btn.btn-warning.shadow.d-block.w-100(type='submit') #{loginForm.altButton} 
+              p.text-muted #{loginForm.text}&nbsp;
+                a(href='/register') #{loginForm.button}
