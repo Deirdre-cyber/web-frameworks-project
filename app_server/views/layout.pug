@@ -7,25 +7,26 @@ head
   link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
   link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
   link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&display=swap')
-  
-nav#mainNav.navbar.navbar-dark.navbar-expand-md.sticky-top.navbar-shrink.py-3
-  .container
-    a.navbar-brand.d-flex.align-items-center(href='/')
-      span.bs-icon-sm.bs-icon-circle.bs-icon-primary.shadow.d-flex.justify-content-center.align-items-center.mr-2.bs-icon
-        i.fa.fa-rocket(aria-hidden='true')
-      span
-        strong Polestellar
-    button.navbar-toggler(data-toggle='collapse', data-target='#navcol-3')
-      span.sr-only Toggle navigation
-      span.navbar-toggler-icon
-    #navcol-3.collapse.navbar-collapse
-      ul.navbar-nav.mx-auto
-        li.nav-item
-          a.nav-link(href='/') All 
-      a.btn.btn-warning.shadow(role='button', href='/register') Register
-      a.btn.btn-warning.shadow.ml-2(role='button', href='/login') Login
-      a.btn.btn-primary.ml-2(role='button', href='/login/favourites') Favourites
-section.py-1
+
+body  
+  nav#mainNav.navbar.navbar-dark.navbar-expand-md.sticky-top.navbar-shrink.py-3
+    .container
+      a.navbar-brand.d-flex.align-items-center(href='/')
+        span.bs-icon-sm.bs-icon-circle.bs-icon-primary.shadow.d-flex.justify-content-center.align-items-center.mr-2.bs-icon
+          i.fa.fa-rocket(aria-hidden='true')
+        span
+          strong Polestellar
+      button.navbar-toggler(data-toggle='collapse', data-target='#navcol-3')
+        span.sr-only Toggle navigation
+        span.navbar-toggler-icon
+      #navcol-3.collapse.navbar-collapse
+        ul.navbar-nav.mx-auto
+          li.nav-item
+            a.nav-link(href='/') All 
+        a.btn.btn-warning.shadow(role='button', href='/register') Register
+        a.btn.btn-warning.shadow.ml-2(role='button', href='/login') Login
+        a.btn.btn-primary.ml-2(role='button', href='/login/favourites') Favourites
+  section.py-1
   
 block content
 

@@ -16,4 +16,4 @@ Non-functional requirements
 •	REST API with error messages and some validation.\
 •	Angular components for registration screen\
 •	Integrated final application\
-•	Security\
+•	Security
