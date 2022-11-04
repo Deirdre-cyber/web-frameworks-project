@@ -54,34 +54,73 @@ const loginUser = function (req, res) {
 };
 
 const favouritesRead = function (req, res) {
-    res
-        .status(200)
-        .json({ "status": "success" });
-};
-
-const favouritesAddOne = function (req, res) {
-    Favourite.create({
-        name: req.body.name,
-        summary: req.body.summary,
-        difficulty: req.body.difficulty,
-        image: req.body.image
-    }, (err, favourite) => {
+    Favourite.find({}, function (err, result) {
         if (err) {
-            res
-                .status(400)
-                .json(err);
+            console.log(err);
         } else {
-            res
-                .status(201)
-                .json(favourite);
+            res.json(result);
         }
     });
 };
 
+const favouritesAddOne = function (req, res) {
+    Favourite.updateOne(
+        { _id: "6353e0eb1d591e49c07fef35" },//variable for logged in user
+        { $addToSet: { 
+            favourites: "Ballerina"
+        } },
+        function (err, favourite) {
+            if (err) {
+                res
+                    .status(404)
+                    .json({
+                        err,
+                        "message": "Favourite not added"
+                    });
+            } else {
+                res
+                    .status(201)
+                    .json({
+                        favourite,
+                        "message": "Favourite added successfully"
+                    });
+            }
+        }
+    );
+};
+
 const favouriteDeleteOne = function (req, res) {
-    res
-        .status(200)
-        .json({ "status": "success" });
+    if (req.params && req.params.favouriteid) {
+        Favourite.updateOne(
+            { _id: "6353e0eb1d591e49c07fef35" },//variable for logged in user
+            { $pull: { 
+                favourites: "Ballerina"
+            } },
+            function (err, favourite) {
+                if (err) {
+                    res
+                        .status(404)
+                        .json({
+                            err,
+                            "message": "Favourite not deleted"
+                        });
+                } else {
+                    res
+                        .status(201)
+                        .json({
+                            favourite,
+                            "message": "Favourite deleted successfully"
+                        });
+                }
+            }
+        );
+    } else {
+        res
+            .status(404)
+            .json({
+                "message": "No favouriteid in request"
+            });
+    }
 };
 
 module.exports = {

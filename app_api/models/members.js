@@ -3,21 +3,7 @@ const mongoose = require('mongoose');
 const favouriteSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
-    },
-    summary: {
-        type: String,
-        required: true
-    },
-    difficulty: {
-        type: Number,
-        'default': 0,
-        min: 0,
-        max: 3
-    },
-    image: {
-        type: String,
-        required: true
+        enum: ["Ballerina", "Brass Monkey", "Shoulder Mount", "Butterfly", "Cupid", "Ayesha", "Anastasia Frog", "Genie", "Flatline Scorpio", "Hood Ornament", "Jasmine", "Superman"]
     }
 });
 

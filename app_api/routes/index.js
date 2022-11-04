@@ -24,10 +24,11 @@ router
 router
     .route('/login/:loginid/favourites')
     .get(ctrlUsers.favouritesRead)
-    .post(ctrlUsers.favouritesAddOne);
+    .put(ctrlUsers.favouritesAddOne); //not working - TBC
 
 router
     .route('/login/:loginid/favourites/:favouriteid')
-    .delete(ctrlUsers.favouriteDeleteOne);
+    .put(ctrlUsers.favouriteDeleteOne); //not working - TBC
+
 
 module.exports = router;
