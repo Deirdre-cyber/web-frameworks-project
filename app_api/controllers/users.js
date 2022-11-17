@@ -54,7 +54,7 @@ const loginUser = function (req, res) {
 };
 
 const favouritesRead = function (req, res) {
-    Favourite.find({}, function (err, result) {
+    Member.find({}, function (err, result) {
         if (err) {
             console.log(err);
         } else {
@@ -63,11 +63,13 @@ const favouritesRead = function (req, res) {
     });
 };
 
-const favouritesAddOne = function (req, res) {
-    Favourite.updateOne(
-        { _id: "6353e0eb1d591e49c07fef35" },//variable for logged in user
-        { $addToSet: { 
-            favourites: "Ballerina"
+/*const favouritesAddOne = function (req, res) {
+    Member.updateOne(
+        { email: "email4" },// variable for logged in user
+        { $push: { 
+            favourites: {
+                name: "Brass Monkey"
+            }
         } },
         function (err, favourite) {
             if (err) {
@@ -87,15 +89,73 @@ const favouritesAddOne = function (req, res) {
             }
         }
     );
+};*/
+
+const favouritesAddOne = function (req, res) {  //inserts default enum, must take variable from selected image
+    const loginId = req.params.loginid;
+    if (loginId) {
+        Member
+            .findById(loginId)
+            .select('favourites')
+            .exec((err, member) => {
+                if (err) {
+                    res
+                        .status(400)
+                        .json(err);
+                } else {
+                    _addFavourite(req, res, member);
+                }
+            }
+            );
+    } else {
+        res
+            .status(404)
+            .json({
+                "message": "Not found, loginid required"
+            });
+    }
+};
+
+const _addFavourite = function (req, res, member) {
+    if (!member) {
+        res
+            .status(404)
+            .json({
+                "message": "memberid not found"
+            });
+    } 
+    
+    else {
+        member.favourites.push({
+            name: req.body.name
+        });
+        member.save((err, member) => {
+            if (err) {
+                console.log(err);
+                res
+                    .status(400)
+                    .json(err);
+            } else {
+                let thisFavourite = member.favourites[member.favourites.length - 1];
+                res
+                    .status(201)
+                    .json(thisFavourite);
+            }
+        });
+    }
 };
 
 const favouriteDeleteOne = function (req, res) {
     if (req.params && req.params.favouriteid) {
-        Favourite.updateOne(
+        Member.updateOne(
             { _id: "6353e0eb1d591e49c07fef35" },//variable for logged in user
-            { $pull: { 
-                favourites: "Ballerina"
-            } },
+            {
+                $pull: {
+                    favourites: {
+                        name: "Jade"
+                    }
+                }
+            },
             function (err, favourite) {
                 if (err) {
                     res

@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const favouriteSchema = new mongoose.Schema({
     name: {
         type: String,
-        enum: ["Ballerina", "Brass Monkey", "Shoulder Mount", "Butterfly", "Cupid", "Ayesha", "Anastasia Frog", "Genie", "Flatline Scorpio", "Hood Ornament", "Jasmine", "Superman"]
+        enum: ['Ballerina', 'Brass Monkey', 'Shoulder Mount', 'Butterfly', 'Cupid', 'Ayesha', 'Anastasia Frog', 'Genie', 'Flatline Scorpio', 'Hood Ornament', 'Jasmine', 'Superman'],
+        default: 'Brass Monkey'
     }
 });
 
