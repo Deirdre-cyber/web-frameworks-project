@@ -11,10 +11,12 @@ const movesListAll = function (req, res) {
   });
 };
 
+
+//resolve issue
 const trickReadOne = function (req, res) {
-  if (req.params && req.params.trickid) {
+  if (req.params && req.params.name) {
     Move
-      .findById(req.params.trickid)
+      .find(req.params.name)
       .exec((err, move) => {
         if (!move) {
           res
@@ -22,6 +24,7 @@ const trickReadOne = function (req, res) {
             .json({
               "message": "moveid not found"
             });
+
           return;
         } else if (err) {
           res
@@ -39,6 +42,7 @@ const trickReadOne = function (req, res) {
       .json({
         "message": "No moveid in request"
       });
+      console.log('Finding move details', req.params.name);
   }
 };
 

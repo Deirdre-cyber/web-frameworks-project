@@ -8,8 +8,9 @@ router
     .route('/')
     .get(ctrlMoves.movesListAll); //working
 
+
 router
-    .route('/trick/:trickid')
+    .route('/trick/:trickName')
     .get(ctrlMoves.trickReadOne); //working
 
 /* User pages */
