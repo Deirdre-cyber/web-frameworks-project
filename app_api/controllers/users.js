@@ -63,35 +63,8 @@ const favouritesRead = function (req, res) {
     });
 };
 
-/*const favouritesAddOne = function (req, res) {
-    Member.updateOne(
-        { email: "email4" },// variable for logged in user
-        { $push: { 
-            favourites: {
-                name: "Brass Monkey"
-            }
-        } },
-        function (err, favourite) {
-            if (err) {
-                res
-                    .status(404)
-                    .json({
-                        err,
-                        "message": "Favourite not added"
-                    });
-            } else {
-                res
-                    .status(201)
-                    .json({
-                        favourite,
-                        "message": "Favourite added successfully"
-                    });
-            }
-        }
-    );
-};*/
-
-const favouritesAddOne = function (req, res) {  //inserts default enum, must take variable from selected image
+//inserts default enum, must take variable from selected image
+const favouritesAddOne = function (req, res) {  
     const loginId = req.params.loginid;
     if (loginId) {
         Member
