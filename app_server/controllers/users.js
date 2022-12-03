@@ -44,25 +44,25 @@ const login = function (req, res) {
     });
 };
 
-const favourites = function (req, res) {
+/* GET 'Favourite' page */
+const _renderFavourites = function (req, res, responseBody) {
     res.render('favourites', {
-        moveDetails: [{
-            name: 'Ballerina',
-            summary: 'This trick reminds me of a ballerina twirling in a music box. It will either get you feeling like a star or seeing stars in a dizzy hot mess.',
-            difficulty: 1,
-            image: '/images/ballerina.jpg'
-        }, {
-            name: 'Brass Monkey',
-            summary: 'No bananas needed for this pole trick. Just a happy twist and a smile as you go around the pole with ease.',
-            difficulty: 2,
-            image: '/images/brass_monkey.jpg'
-        }, {
-            name: 'Superman',
-            summary: 'What better way of showing your love for pole by embracing the hero in you, lift yourself up and showing your awesomeness with this intermediate pole move',
-            difficulty: 1,
-            image: '/images/superman.jpg'
-        }]
-    });
+        moveDetails: responseBody
+    }
+        );
+};
+
+const favourites = function (req, res) {
+    const path = '/api/login/' + req.params.loginid + '/favourites';
+    const requestOptions = {
+        url: apiOptions.server + path,
+        method: 'GET',
+        json: {},
+    };
+    request(requestOptions, (err, response, body) => {
+        _renderFavourites(req, res, body);
+    }
+    );
 };
 
 module.exports = {

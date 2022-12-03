@@ -10,7 +10,7 @@ router
 
 
 router
-    .route('/trick/:trickName')
+    .route('/trick/:trickid')
     .get(ctrlMoves.trickReadOne); //working
 
 /* User pages */
@@ -20,7 +20,7 @@ router
 
 router
     .route('/login/:loginid')
-    .get(ctrlUsers.loginUser); //working
+    .get(ctrlUsers.loginUser); //working - needs to be post
 
 router
     .route('/login/:loginid/favourites')

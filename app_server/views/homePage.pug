@@ -12,8 +12,7 @@ block content
       each trick in moveDetails
         .col.mb-4.text-center
           div.mb-4
-            a(href='/trick/' + trick.name)
-
+            a(href=`/trick/${trick._id}`)
               img.rounded.img-fluid.shadow.w-100.fit-cover(src=trick.image, style='height: 250px;')    
             .pt-4
               p Difficulty 

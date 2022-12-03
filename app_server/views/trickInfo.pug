@@ -3,23 +3,26 @@ extends layout
 include _includes/sharedHTMLfunctions
 
 block content
-
-    - let trick = trickInfo
-
   .container.py-4.py-xl-5
     .row.mb-5
       .col-md-8.col-xl-6.text-center.mx-auto
-        h2.font-weight-bold #{pageHeader.name[trick.name]}
-        p.text-muted.w-lg-50 #{pageHeader.title[[trick.name]]}
-    
+        h2.font-weight-bold #{pageHeader.name}
+        p.text-muted.w-lg-50 #{pageHeader.title}
+
         div.mt-5
-          img.rounded.img-fluid.shadow.w-100.fit-cover(src=trick.image, style='height: 350px;')
+          img.rounded.img-fluid.shadow.w-100.fit-cover(src=tricks.image, style='height: 350px;')
           .py-4
-            p.text-muted.pb-3 #{trick.instructions}
+            p.text-muted.pb-3 #{tricks.instruction}
             h5.pb-1 Muscle Groups Engaged
             .muscle-groups.pb-4
-              each muscle in trick.muscle_groups
+              each muscle in tricks.muscle_groups
                 span.badge.badge-warning.p-2.m-2 #{muscle}
             h5.pb-1 Home Exercises
             a.text-muted(href= '#') 
-            p.text-muted #{trick.conditioning}
+            p.text-muted #{tricks.conditioning}
+
+      .col-md-8.col-xl-6.text-center.mx-auto
+        if (pageHeader.favourite)
+          a.btn.btn-secondary.btn-sm(href=`/login/${tricks._id}/favourites/${favourite._id}`) Remove from Favourite
+        else
+          a.btn.btn-secondary.btn-sm(href=`/login/${tricks._id}/favourites`) Add to Favourites

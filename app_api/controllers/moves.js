@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Move = mongoose.model('Moves');
 
+/* GET all moves */
 const movesListAll = function (req, res) {
   Move.find({}, function (err, result) {
     if (err) {
@@ -12,11 +13,13 @@ const movesListAll = function (req, res) {
 };
 
 
-//resolve issue
+/* GET a move by the id */
+
 const trickReadOne = function (req, res) {
-  if (req.params && req.params.name) {
+  
+  if (req.params && req.params.trickid) {
     Move
-      .find(req.params.name)
+      .findById(req.params.trickid)
       .exec((err, move) => {
         if (!move) {
           res
@@ -42,7 +45,6 @@ const trickReadOne = function (req, res) {
       .json({
         "message": "No moveid in request"
       });
-      console.log('Finding move details', req.params.name);
   }
 };
 
