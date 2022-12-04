@@ -5,18 +5,8 @@ include _includes/sharedHTMLfunctions
 block content
   .container.py-4.py-xl-5
     .row.mb-5
-      .col-md-8.col-xl-6.p-2.text-center.mx-auto.border-bottom.border-top.border-warning.rounded
-        h2.font-weight-bold #{homePageHeader.level}
-        p.text-muted.w-lg-50 #{homePageHeader.tagline}
-    .row.row-cols-1.row-cols-md-2.mx-auto(style='max-width: 900px;')
-      each trick in moveDetails
-        .col.mb-4.text-center
-          div.mb-4
-            a(href=`/trick/${trick._id}`)
-              img.rounded.img-fluid.shadow.w-100.fit-cover(src=trick.image, style='height: 250px;')    
-            .pt-4
-              p Difficulty 
-                +outputDifficulty(trick.difficulty)
-            .py-1
-              h4.font-weight-bold #{trick.name}
-              p.text-muted #{trick.summary}
+      <app-home-list></app-home-list>
+  block scripts 
+    script(src='/build/polyfills.48728cbf9893c560.js')
+    script(src='/build/main.00ea546ad4c7d0c8.js')
+    script(src='/build/runtime.5504e8aa113568b7.js')

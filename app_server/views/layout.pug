@@ -21,11 +21,12 @@ body
         span.navbar-toggler-icon
       #navcol-3.collapse.navbar-collapse
         ul.navbar-nav.mx-auto
-          li.nav-item
-            a.nav-link(href='/') All 
-        a.btn.btn-warning.shadow(role='button', href='/register') Register
-        a.btn.btn-warning.shadow.ml-2(role='button', href='/login') Login
-        a.btn.btn-primary.ml-2(role='button', href='/login/favourites') Favourites
+          a.btn.btn-warning.shadow.m-2(role='button', href='/register') Register
+          if (!user)
+            a.btn.btn-warning.shadow.m-2(role='button', href='/login') Login
+          if (user)
+            a.btn.btn-primary.shadow.m-2(role='button', href='/logout') Logout #{user.username}
+          a.btn.btn-primary.m-2(role='button', href='/login/favourites') Favourites
   section.py-1
   
 block content
@@ -47,6 +48,7 @@ footer.bg-dark
           //fb icon
         li.list-inline-item
           //insta icon
+          
 script(src='/javascripts/jquery.min.js')
 script(src='/javascripts/bootstrap.min.js')
 script(src='/javascripts/bold-and-bright.js')

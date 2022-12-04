@@ -11,7 +11,8 @@ block content
           .card-body.text-center.d-flex.flex-column.align-items-center
             .bs-icon-xl.bs-icon-circle.bs-icon-primary.shadow.bs-icon.my-4
               img.rounded.img-fluid.shadow.w-100.fit-cover(src=registerPageHeader.icon, style='height: 100%')
-            form(action='/register', method='POST')
+              
+            form(role='form', action="/register",method="post")
               .mb-3
                 input.form-control(type='text', name='fName', placeholder='First Name')
               .mb-3

@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
+var passportLocalMongoose = require('passport-local-mongoose');
 
 const favouriteSchema = new mongoose.Schema({
     name: {
@@ -22,16 +23,14 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    password: {
-        type: String,
-        required: true
-    },
     level: {
         type: String,
         'default': "Beginner"
     },
     favourites: [favouriteSchema]
 });
+
+userSchema.plugin(passportLocalMongoose);
 
 mongoose.model('Favourites', favouriteSchema);
 mongoose.model('Members', userSchema);
