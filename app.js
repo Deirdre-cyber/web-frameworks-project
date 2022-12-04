@@ -2,14 +2,12 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 const logger = require('morgan');
-//var mongoose = require('mongoose');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-
-
-
+var LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash');
+
 require("dotenv").config();
 require('./app_api/models/db');
 
@@ -37,8 +35,8 @@ app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(require('express-session')({
@@ -65,26 +63,33 @@ app.use('/', indexRoutes);
 
 // passport config
 var Member = require('./app_api/models/members');
-passport.use(new LocalStrategy(Member.authenticate()));
+//passport.use(new LocalStrategy(Member.authenticate()));
 //create session id cookie
+passport.use(Member.createStrategy());
+passport.use(new LocalStrategy(Member.authenticate()));
 passport.serializeUser(Member.serializeUser());
 passport.deserializeUser(Member.deserializeUser());
 
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+      res.status(err.status || 500);
+      res.render('error', {
+          message: err.message,
+          error: err
+      });
+  });
+}
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {
+      message: err.message,
+      error: {}
+  });
 });
 
 module.exports = app;

@@ -9,7 +9,7 @@ const favouriteSchema = new mongoose.Schema({
     }
 });
 
-const userSchema = new mongoose.Schema({
+const Member = new mongoose.Schema({
     firstname: {
         type: String,
         required: true
@@ -23,6 +23,11 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
     level: {
         type: String,
         'default': "Beginner"
@@ -30,7 +35,9 @@ const userSchema = new mongoose.Schema({
     favourites: [favouriteSchema]
 });
 
-userSchema.plugin(passportLocalMongoose);
+Member.plugin(passportLocalMongoose);
 
 mongoose.model('Favourites', favouriteSchema);
-mongoose.model('Members', userSchema);
+
+
+module.exports = mongoose.model('Members', Member);

@@ -12,13 +12,13 @@ block content
             .bs-icon-xl.bs-icon-circle.bs-icon-primary.shadow.bs-icon.my-4
               img.rounded.img-fluid.shadow.w-100.fit-cover(src=registerPageHeader.icon, style='height: 100%')
               
-            form(role='form', action="/register",method="post")
+            form(role='form',method="post")
               .mb-3
-                input.form-control(type='text', name='fName', placeholder='First Name')
+                input.form-control(type='text', name='firstname', placeholder='First Name')
               .mb-3
-                input.form-control(type='text', name='sName', placeholder='Last Name')
+                input.form-control(type='text', name='lastname', placeholder='Last Name')
               .mb-3
-                input.form-control(type='email', name='email', placeholder='Email')
+                input.form-control(type='email', name='username', placeholder='Email')
               .mb-3
                 input.form-control(type='password', name='password', 
                 placeholder='Password')
