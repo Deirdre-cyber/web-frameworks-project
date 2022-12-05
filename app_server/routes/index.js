@@ -2,9 +2,6 @@ const express = require('express');
 var passport = require('passport');
 const Member = require('../../app_api/models/members');
 const router = express.Router();
-
-//app_api\models\members.js
-
 const ctrlMoves = require('../controllers/moves');
 const ctrlUsers = require('../controllers/users');
 
@@ -61,13 +58,14 @@ router.post('/register', function (req, res) {
 
 //LOGIN
 router.get('/login', ctrlUsers.login);
-router.get('/login', (req, res) => {
+
+/*router.get('/login', (req, res) => {
     res.render('login',
         {
             user: req.user, error: req.flash('error')
         }
     );
-});
+});*/
 
 router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), (req, res, next) => {
     req.session.save((err) => {
@@ -80,13 +78,9 @@ router.post('/login', passport.authenticate('local', { failureRedirect: '/login'
 
 //LOGOUT
 router.get('/logout', (req, res, next) => {
-    req.logout();
-    req.session.save((err) => {
-        if (err) {
-            return next(err);
-        }
-        res.redirect('/');
-    });
+    req.session.destroy();
+        res.redirect('/login');
+
 });
 
 //GET Favourites

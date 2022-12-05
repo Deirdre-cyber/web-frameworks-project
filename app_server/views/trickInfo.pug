@@ -20,9 +20,3 @@ block content
             h5.pb-1 Home Exercises
             a.text-muted(href= '#') 
             p.text-muted #{tricks.conditioning}
-
-      .col-md-2.col-xl-2.text-center.mx-auto
-        if (pageHeader.favourite)
-          a.btn.btn-secondary.btn-sm(href=`/login/${tricks._id}/favourites/${favourite._id}`) Remove from Favourite
-        else
-          a.btn.btn-secondary.btn-sm(href=`/login/${tricks._id}/favourites`) Add to Favourites

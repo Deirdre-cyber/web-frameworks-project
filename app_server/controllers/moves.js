@@ -11,11 +11,13 @@ if (process.env.NODE_ENV === 'production') {
 /* GET 'home' page */
 
 const _renderHomepage = function (req, res, responseBody) {
+    
     res.render('homePage', {
         homePageHeader: {
             level: 'Intermediate',
             tagline: 'If you have mastered the basics in your pole dance journey, check out these intermeiate spins and moves. See the difficulty level, the muscle groups engaged and tips on how to improve strength and flexibility off the pole'
         },
+        user: 'user',
         moveDetails: responseBody
     });
 };
@@ -64,6 +66,4 @@ const trickInfo = function (req, res) {
 module.exports = {
     homePage,
     trickInfo
-
-
 };

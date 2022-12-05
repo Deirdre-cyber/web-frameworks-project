@@ -6,7 +6,6 @@ const registerUser = function (req, res) {
     Member.create({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
-        email: req.body.email,
         password: req.body.password,
         level: req.body.level
     }, (err, member) => {

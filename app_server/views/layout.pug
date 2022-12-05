@@ -11,7 +11,7 @@ head
 body  
   nav#mainNav.navbar.navbar-dark.navbar-expand-md.sticky-top.navbar-shrink.py-3
     .container
-      a.navbar-brand.d-flex.align-items-center(href='/')
+      a.navbar-brand.d-flex.align-items-center
         span.bs-icon-sm.bs-icon-circle.bs-icon-primary.shadow.d-flex.justify-content-center.align-items-center.mr-2.bs-icon
           i.fa.fa-rocket(aria-hidden='true')
         span
@@ -21,12 +21,13 @@ body
         span.navbar-toggler-icon
       #navcol-3.collapse.navbar-collapse
         ul.navbar-nav.mx-auto
+          
+        if (!user)
+          a.btn.btn-warning.shadow.m-2(role='button', href='/login') Login
           a.btn.btn-warning.shadow.m-2(role='button', href='/register') Register
-          if (!user)
-            a.btn.btn-warning.shadow.m-2(role='button', href='/login') Login
-          if (user)
-            a.btn.btn-primary.shadow.m-2(role='button', href='/logout') Logout #{user.username}
-          a.btn.btn-primary.m-2(role='button', href='/login/favourites') Favourites
+        if (user)
+          a.btn.btn-primary.shadow.m-2(role='button', href='/logout') Logout #{user.username}
+         
   section.py-1
   
 block content
