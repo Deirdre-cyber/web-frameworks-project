@@ -6,25 +6,25 @@ const ctrlUsers = require('../controllers/users');
 /* Data pages */
 router
     .route('/')
-    .get(ctrlMoves.movesListAll); //working
+    .get(ctrlMoves.movesListAll);
 
 
 router
     .route('/trick/:trickid')
-    .get(ctrlMoves.trickReadOne); //working
+    .get(ctrlMoves.trickReadOne);
 
 /* User pages */
 router
     .route('/register')
-    .post(ctrlUsers.registerUser); //working
+    .post(ctrlUsers.registerUser);
 
 router
     .route('/login/:loginid')
-    .get(ctrlUsers.loginUser); //working - needs to be post
+    .get(ctrlUsers.loginUser);
 
 router
     .route('/login/:loginid/favourites')
-    .get(ctrlUsers.favouritesRead) //working
+    .get(ctrlUsers.favouritesRead)
     .put(ctrlUsers.favouritesAddOne); //working but move currently hardcoded - need function to add
 
 router

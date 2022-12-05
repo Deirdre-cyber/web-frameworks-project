@@ -53,7 +53,7 @@ app.use(express.static(path.join(__dirname, 'app_public')));
 
 //deal with CORS error issue
 app.use('/api', function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
@@ -63,7 +63,6 @@ app.use('/', indexRoutes);
 
 // passport config
 var Member = require('./app_api/models/members');
-//passport.use(new LocalStrategy(Member.authenticate()));
 //create session id cookie
 passport.use(Member.createStrategy());
 passport.use(new LocalStrategy(Member.authenticate()));

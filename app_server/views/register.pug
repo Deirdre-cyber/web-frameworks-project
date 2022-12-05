@@ -14,14 +14,14 @@ block content
               
             form(role='form',method="post")
               .mb-3
-                input.form-control(type='text', name='firstname', placeholder='First Name')
+                input.form-control(type='text', name='firstname', placeholder='First Name' required)
               .mb-3
-                input.form-control(type='text', name='lastname', placeholder='Last Name')
+                input.form-control(type='text', name='lastname', placeholder='Last Name' required)
               .mb-3
-                input.form-control(type='email', name='username', placeholder='Email')
+                input.form-control(type='email', name='username', placeholder='Email' required)
               .mb-3
                 input.form-control(type='password', name='password', 
-                placeholder='Password')
+                placeholder='Password' required)
               .mb-3
                 label(for='level') #{registerForm.levelHeading}&nbsp;
                 br

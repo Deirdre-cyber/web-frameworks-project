@@ -59,14 +59,6 @@ router.post('/register', function (req, res) {
 //LOGIN
 router.get('/login', ctrlUsers.login);
 
-/*router.get('/login', (req, res) => {
-    res.render('login',
-        {
-            user: req.user, error: req.flash('error')
-        }
-    );
-});*/
-
 router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), (req, res, next) => {
     req.session.save((err) => {
         if (err) {

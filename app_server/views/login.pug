@@ -11,12 +11,12 @@ block content
           .card-body.text-center.d-flex.flex-column.align-items-center
             .bs-icon-xl.bs-icon-circle.bs-icon-primary.shadow.bs-icon.my-4
               img.rounded.img-fluid.shadow.w-100.fit-cover(src=loginPageHeader.icon, style='height: 100%')
-              
+                          
             form(role='form', action="/login",method="post",)
               .mb-3
-                input.form-control(type='email', name='username', placeholder='Email')
+                input.form-control(type='email', name='username', placeholder='Email' required)
               .mb-3
-                input.form-control(type='password', name='password', placeholder='Password')
+                input.form-control(type='password', name='password', placeholder='Password' required)
               .mb-3
                 button.btn.btn-warning.shadow.d-block.w-100(type='submit') #{loginForm.altButton} 
               p.text-muted #{loginForm.text}&nbsp;
