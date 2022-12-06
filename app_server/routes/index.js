@@ -6,7 +6,14 @@ const ctrlMoves = require('../controllers/moves');
 const ctrlUsers = require('../controllers/users');
 
 /* Data pages */
-router.get('/', ctrlMoves.homePage);
+router.get('/', function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return ctrlMoves.homePage(req, res); 
+       
+    }
+    res.redirect('/login');
+}
+);
 
 router.get('/trick/:trickid', ctrlMoves.trickInfo);
 
